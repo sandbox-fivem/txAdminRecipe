@@ -1,0 +1,393 @@
+name: Sandbox Framework
+version: v1.0.0
+author: sandbox-fivem
+description: >
+  An advanced FiveM RP framework including jobs, gangs, housing & more!
+  Requires MariaDB/MySQL. Uses a modular exec config system.
+
+variables:
+  dbHost: localhost
+  dbPort: 3306
+  dbUsername: root
+  dbPassword: ""
+  dbName: fivem-sandbox
+
+tasks:
+  # =============================================
+  # STEP 1 — SQL FILE DOWNLOAD (must come before query_database)
+  # =============================================
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sql
+    ref: main
+    dest: ./tmp/sandbox-sql
+
+  # =============================================
+  # STEP 2 — DATABASE SETUP
+  # =============================================
+  - action: connect_database
+
+  - action: query_database
+    file: ./tmp/sandbox-sql/database.sql
+
+  # =============================================
+  # STEP 3 — BASE CFX SERVER DATA
+  # =============================================
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: resources
+    dest: ./resources/[cfx-default]
+
+  # =============================================
+  # STEP 4 — DATABASE DEPENDENCY (oxmysql)
+  # =============================================
+  - action: download_file
+    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+    path: ./tmp/files/oxmysql.zip
+
+  - action: unzip
+    src: ./tmp/files/oxmysql.zip
+    dest: ./resources/[standalone]
+
+  # =============================================
+  # STEP 5 — CORE FRAMEWORK RESOURCES
+  # =============================================
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-hud
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-hud
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-commands
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-commands
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-keybinds
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-keybinds
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-ipl
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-ipl
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-chat3
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-chat3
+
+  # =============================================
+  # STEP 6 — ECONOMY & FINANCE
+  # =============================================
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-finance
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-finance
+
+  # =============================================
+  # STEP 7 — JOBS & LABOR
+  # =============================================
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-jobs
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-jobs
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-labor
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-labor
+
+  # =============================================
+  # STEP 8 — VEHICLES
+  # =============================================
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-dealerships
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-dealerships
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-fitment
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-fitment
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-fuel
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-fuel
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-damage
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-damage
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-customs
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-customs
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-mechanic
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-mechanic
+
+  # =============================================
+  # STEP 9 — LAW ENFORCEMENT & CRIME
+  # =============================================
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-jail
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-jail
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-evidence
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-evidence
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-escort
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-escort
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-cctv
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-cctv
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-drugs
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-drugs
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-lasers
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-lasers
+
+  # =============================================
+  # STEP 10 — ENTERTAINMENT & SOCIAL
+  # =============================================
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-casino
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-casino
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-games
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-games
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-dj
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-dj
+
+  # =============================================
+  # STEP 11 — WORLD & LOCATIONS
+  # =============================================
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-locations
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-locations
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-doors
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-doors
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-laptop
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-laptop
+
+  # =============================================
+  # STEP 12 — WRITE server.cfg (matches your real structure exactly)
+  # =============================================
+  - action: write_file
+    path: ./server.cfg
+    content: |
+      # ################
+      # || SANDBOXRP  ||
+      # ################
+
+      ## DO NOT EDIT ##
+      endpoint_add_tcp "0.0.0.0:30120"
+      endpoint_add_udp "0.0.0.0:30120"
+
+      sv_maxclients 64
+      set steam_webApiKey "none"
+      sets tags "housing, gangs, robberies, drugs, custom cars, custom clothing, pd, ems, racing"
+      sv_endpointPrivacy true
+      sv_scriptHookAllowed 0
+
+      ## DO NOT EDIT ##
+      sv_licenseKey "{{svLicenseKey}}"
+      sv_tebexSecret
+      sv_hostname "{{serverName}}"
+      sets discord "https://discord.gg/sandboxgg"
+      sets website "https://sandboxrp.gg/"
+      sets sv_projectName "SandboxRP"
+      sets sv_projectDesc "An advanced FiveM RP framework including jobs, gangs, housing & more!"
+      sets locale "en-US"
+      load_server_icon logo.png
+      sets banner_detail "https://i.ibb.co/Tm01NWq/banner.png"
+      sets banner_connecting "https://i.ibb.co/Tm01NWq/banner.png"
+      set sv_enforceGameBuild 2699
+      sets sv_pureLevel 1
+      set SERVER_TYPE "dev"
+
+      set winter_only "true"
+
+      # Comment to LIST the server
+      # Uncomment to NOT LIST the server
+      # sv_master1 ""
+
+      exec ./config/database.cfg
+      exec ./config/mongodb.cfg
+      exec ./config/core.cfg
+      exec ./config/admins.cfg
+      exec ./config/resources.cfg
+      exec ./config/voice.cfg
+
+      set WS_MDT_ALERTS ""
+
+  # =============================================
+  # STEP 13 — config/database.cfg
+  # txAdmin fills {{dbConnectionString}} automatically
+  # =============================================
+  - action: write_file
+    path: ./config/database.cfg
+    content: |
+      # Database Configuration — auto-generated by txAdmin recipe
+      set mysql_connection_string "{{dbConnectionString}}"
+
+  # =============================================
+  # STEP 14 — config/mongodb.cfg (stub — fill after deploy)
+  # =============================================
+  - action: write_file
+    path: ./config/mongodb.cfg
+    content: |
+      # MongoDB Configuration
+      # Edit this file after deployment with your MongoDB URI
+      set mongodb_url "mongodb://localhost:27017"
+      set mongodb_database "{{dbName}}"
+
+  # =============================================
+  # STEP 15 — config/core.cfg
+  # =============================================
+  - action: write_file
+    path: ./config/core.cfg
+    content: |
+      # Core Server Configuration
+      set onesync on
+
+      # txAdmin integration
+      setr txAdminServerMode true
+
+  # =============================================
+  # STEP 16 — config/admins.cfg (stub — fill after deploy)
+  # =============================================
+  - action: write_file
+    path: ./config/admins.cfg
+    content: |
+      # Admins & ACE Permissions
+      # Add your admin identifiers and ace permissions here after deployment.
+      #
+      # Example:
+      # add_principal identifier.fivem:000000 group.admin
+      # add_ace group.admin command allow
+      # add_ace group.admin command.add_principal allow
+
+  # =============================================
+  # STEP 17 — config/resources.cfg
+  # All resource ensures — mirrors your exec pattern
+  # =============================================
+  - action: write_file
+    path: ./config/resources.cfg
+    content: |
+      # ==========================================
+      # Resource Ensures
+      # ==========================================
+
+      # CFX Default Resources
+      ensure [cfx-default]
+
+      # Database
+      ensure oxmysql
+
+      # ==========================================
+      # Sandbox Core
+      # ==========================================
+      ensure sandbox-commands
+      ensure sandbox-keybinds
+      ensure sandbox-ipl
+      ensure sandbox-chat3
+      ensure sandbox-hud
+
+      # ==========================================
+      # Economy
+      # ==========================================
+      ensure sandbox-finance
+
+      # ==========================================
+      # Jobs & Labor
+      # ==========================================
+      ensure sandbox-jobs
+      ensure sandbox-labor
+
+      # ==========================================
+      # Vehicles
+      # ==========================================
+      ensure sandbox-dealerships
+      ensure sandbox-fitment
+      ensure sandbox-fuel
+      ensure sandbox-damage
+      ensure sandbox-customs
+      ensure sandbox-mechanic
+
+      # ==========================================
+      # Law Enforcement & Crime
+      # ==========================================
+      ensure sandbox-jail
+      ensure sandbox-evidence
+      ensure sandbox-escort
+      ensure sandbox-cctv
+      ensure sandbox-drugs
+      ensure sandbox-lasers
+
+      # ==========================================
+      # Entertainment & Social
+      # ==========================================
+      ensure sandbox-casino
+      ensure sandbox-games
+      ensure sandbox-dj
+
+      # ==========================================
+      # World & Locations
+      # ==========================================
+      ensure sandbox-locations
+      ensure sandbox-doors
+      ensure sandbox-laptop
+
+  # =============================================
+  # STEP 18 — config/voice.cfg (stub — fill after deploy)
+  # =============================================
+  - action: write_file
+    path: ./config/voice.cfg
+    content: |
+      # Voice Configuration
+      # Uncomment and configure your voice provider below after deployment.
+
+      # --- pma-voice ---
+      # setr voice_defaultCycle "YELL"
+      # setr voice_defaultVolume 0.3
+      # setr voice_maxProximity 8.0
+      # setr voice_enableSubmix 1
+
+      # --- saltychat / mumble-voip ---
+      # set SALTY_CHAT_SERVER_IDENTIFIER "YOUR_SERVER_ID"
+
+  # =============================================
+  # STEP 19 — CLEANUP
+  # =============================================
+  - action: remove_path
+    path: ./tmp
