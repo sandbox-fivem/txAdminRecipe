@@ -7,7 +7,7 @@ author: sandbox-fivem
 description: >
   An advanced FiveM RP framework including jobs, gangs, housing & more!
   Includes banking, inventory, vehicles, drugs, casino, and more.
-  Requires MariaDB/MySQL. Visit https://sandboxrp.gg for more info.
+  Requires MariaDB/MySQL. Visit https://github.com/sandbox-fivem for more info.
 
 tasks:
   # -----------------------------------------------
