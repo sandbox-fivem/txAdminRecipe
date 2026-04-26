@@ -28,7 +28,7 @@ tasks:
     dest: ./logo.png
 
   # -----------------------------------------------
-  # Database — use database.sql bundled in recipe repo
+  # Database â€” use database.sql bundled in recipe repo
   # -----------------------------------------------
   - action: connect_database
 
@@ -73,7 +73,7 @@ tasks:
     dest: ./config/prod.logs.cfg
 
   # Inject txAdmin DB credentials into database.prod.cfg
-  # ⚠️  You must update database.prod.cfg in your config repo so the
+  # âš ï¸  You must update database.prod.cfg in your config repo so the
   #     connection string line reads exactly:
   #       set mysql_connection_string "{{dbConnectionString}}"
   #     txAdmin will then replace {{dbConnectionString}} automatically.
@@ -89,7 +89,7 @@ tasks:
     subpath: resources
     dest: ./resources/[cfx-default]
 
-  # Remove default chat — sandbox-chat3 replaces it
+  # Remove default chat â€” sandbox-chat3 replaces it
   - action: remove_path
     path: ./resources/[cfx-default]/[gameplay]/chat
 
@@ -102,7 +102,7 @@ tasks:
 
   - action: unzip
     src: ./tmp/oxmysql.zip
-    dest: ./resources/[standalone]
+    dest: ./resources/[standalone]/oxmysql
 
   - action: download_file
     path: ./tmp/ox_lib.zip
@@ -110,7 +110,7 @@ tasks:
 
   - action: unzip
     src: ./tmp/ox_lib.zip
-    dest: ./resources/[standalone]
+    dest: ./resources/[standalone]/ox_lib
 
   - action: download_file
     path: ./tmp/screenshot-basic.zip
@@ -118,13 +118,38 @@ tasks:
 
   - action: unzip
     src: ./tmp/screenshot-basic.zip
-    dest: ./resources/[standalone]
+    dest: ./resources/[standalone]/screenshot-basic
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/discord-screenshot
+    ref: main
+    dest: ./resources/[standalone]/discord-screenshot
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/loadscreen
+    ref: main
+    dest: ./resources/[standalone]/loadscreen
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/biketricks
+    ref: main
+    dest: ./resources/[standalone]/biketricks
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/coords
+    ref: main
+    dest: ./resources/[standalone]/coords
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/xsound
+    ref: main
+    dest: ./resources/[standalone]/xsound
 
   - action: waste_time # prevent GitHub throttling
     seconds: 10
 
   # -----------------------------------------------
-  # Sandbox Framework — confirmed public repos
+  # Sandbox Framework - confirmed public repos
   # -----------------------------------------------
 
   - action: download_github
@@ -269,207 +294,207 @@ tasks:
     dest: ./resources/[sandbox]/sandbox-mechanic
 
   # -----------------------------------------------
-  # Repos referenced in resources.cfg but not yet
-  # public — uncomment each as you push them
+  # Additional sandbox repos required by resources.cfg
   # -----------------------------------------------
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-admin
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-admin
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-admin
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-admin
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-animations
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-animations
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-animations
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-animations
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-apartments
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-apartments
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-apartments
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-apartments
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-base
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-base
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-base
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-base
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-billboards
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-billboards
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-billboards
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-billboards
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-blips
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-blips
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-blips
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-blips
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-characters
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-characters
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-characters
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-characters
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-inventory
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-inventory
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-inventory
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-inventory
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-killzones
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-killzones
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-killzones
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-killzones
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-mdt
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-mdt
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-mdt
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-mdt
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-menu
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-menu
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-menu
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-menu
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-objects
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-objects
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-objects
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-objects
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-ped
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-ped
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-ped
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-ped
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-pedinteraction
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-pedinteraction
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-pedinteraction
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-pedinteraction
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-phone
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-phone
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-phone
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-phone
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-police
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-police
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-police
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-police
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-polyzone
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-polyzone
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-polyzone
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-polyzone
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-properties
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-properties
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-properties
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-properties
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-pwnzor
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-pwnzor
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-pwnzor
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-pwnzor
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-queue
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-queue
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-queue
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-queue
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-radar
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-radar
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-radar
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-radar
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-radio
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-radio
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-radio
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-radio
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-restaurant
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-restaurant
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-restaurant
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-restaurant
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-robbery
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-robbery
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-robbery
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-robbery
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-scenes
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-scenes
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-scenes
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-scenes
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-sounds
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-sounds
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-sounds
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-sounds
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-status
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-status
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-status
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-status
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-sync
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-sync
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-sync
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-sync
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-targeting
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-targeting
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-targeting
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-targeting
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-taxi
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-taxi
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-taxi
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-taxi
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-tow
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-tow
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-tow
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-tow
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-vacation
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-vacation
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-vacation
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-vacation
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-vehicles
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-vehicles
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-vehicles
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-vehicles
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-visuals
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-visuals
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-visuals
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-visuals
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-voip
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-voip
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-voip
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-voip
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-weapons
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-weapons
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-weapons
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-weapons
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-weed
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-weed
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-weed
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-weed
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-ws
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-ws
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-ws
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-ws
 
-  # - action: download_github
-  #   src: https://github.com/sandbox-fivem/sandbox-xmas
-  #   ref: main
-  #   dest: ./resources/[sandbox]/sandbox-xmas
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-xmas
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-xmas
 
   # -----------------------------------------------
   # Clean up
   # -----------------------------------------------
   - action: remove_path
     path: ./tmp
+
