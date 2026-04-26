@@ -15,9 +15,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Dumping database structure for fivem-sandbox
-CREATE DATABASE IF NOT EXISTS `fivem-sandbox` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
-USE `fivem-sandbox`;
+-- Tables will be created in the database specified by the txAdmin connection string
 
 -- Dumping structure for table fivem-sandbox.app_profile_history
 CREATE TABLE IF NOT EXISTS `app_profile_history` (
