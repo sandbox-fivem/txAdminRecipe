@@ -104,19 +104,19 @@ tasks:
   # -----------------------------------------------
   - action: download_file
     path: ./tmp/oxmysql.zip
-    url: https://github.com/communityox/oxmysql/releases/latest/download/oxmysql.zip
+    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
 
   - action: unzip
     src: ./tmp/oxmysql.zip
-    dest: ./resources/[ox]
+    dest: ./resources/[standalone]
 
   - action: download_file
     path: ./tmp/ox_lib.zip
-    url: https://github.com/communityox/ox_lib/releases/latest/download/ox_lib.zip
+    url: https://github.com/overextended/ox_lib/releases/latest/download/ox_lib.zip
 
   - action: unzip
     src: ./tmp/ox_lib.zip
-    dest: ./resources/[ox]
+    dest: ./resources/[standalone]
 
   - action: download_file
     path: ./tmp/screenshot-basic.zip
@@ -124,7 +124,7 @@ tasks:
 
   - action: unzip
     src: ./tmp/screenshot-basic.zip
-    dest: ./resources/screenshot-basic
+    dest: ./resources/[standalone]
 
   - action: waste_time # prevent GitHub throttling
     seconds: 10
