@@ -72,14 +72,16 @@ tasks:
     src: ./tmp/sandbox-config/prod.logs.cfg
     dest: ./config/prod.logs.cfg
 
-  # Inject txAdmin DB credentials into database.prod.cfg
+  # Inject txAdmin deploy variables into server and DB configs
   # âš ï¸  You must update database.prod.cfg in your config repo so the
   #     connection string line reads exactly:
   #       set mysql_connection_string "{{dbConnectionString}}"
   #     txAdmin will then replace {{dbConnectionString}} automatically.
   - action: replace_string
     mode: all_vars
-    file: ./config/database.prod.cfg
+    file:
+      - ./server.cfg
+      - ./config/database.prod.cfg
 
   # -----------------------------------------------
   # CFX default server data
