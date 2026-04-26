@@ -79,17 +79,6 @@ tasks:
       - ./server.cfg
       - ./config/database.prod.cfg
 
-  # Fallback explicit replacements for txAdmin SQL/license vars
-  - action: replace_string
-    file: ./server.cfg
-    placeholder: "{{svLicense}}"
-    replace: "{{svLicense}}"
-
-  - action: replace_string
-    file: ./config/database.prod.cfg
-    placeholder: "{{dbConnectionString}}"
-    replace: "{{dbConnectionString}}"
-
   # -----------------------------------------------
   # CFX default server data
   # -----------------------------------------------
