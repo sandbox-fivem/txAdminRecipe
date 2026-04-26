@@ -75,9 +75,11 @@ tasks:
   #     txAdmin will then replace {{dbConnectionString}} automatically.
   - action: replace_string
     mode: all_vars
-    file:
-      - ./server.cfg
-      - ./config/database.prod.cfg
+    file: ./server.cfg
+
+  - action: replace_string
+    mode: all_vars
+    file: ./config/database.prod.cfg
 
   # -----------------------------------------------
   # CFX default server data
