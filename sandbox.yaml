@@ -116,9 +116,9 @@ tasks:
     dest: ./resources/[standalone]
 
   - action: download_github
-    src: https://github.com/citizenfx/screenshot-basic
-    ref: master
-    dest: ./resources/[standalone]/screenshot-basic
+    src: https://github.com/itschip/screencapture
+    ref: main
+    dest: ./resources/[standalone]/screencapture
 
   - action: download_github
     src: https://github.com/sandbox-fivem/discord-screenshot
