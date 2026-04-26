@@ -49,10 +49,6 @@ tasks:
     dest: ./config/database.prod.cfg
 
   - action: move_path
-    src: ./tmp/sandbox-config/mongodb.prod.cfg
-    dest: ./config/mongodb.prod.cfg
-
-  - action: move_path
     src: ./tmp/sandbox-config/core.prod.cfg
     dest: ./config/core.prod.cfg
 

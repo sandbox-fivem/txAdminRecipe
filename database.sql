@@ -2019,6 +2019,98 @@ CREATE TABLE IF NOT EXISTS `whitelisted_peds` (
 
 -- Dumping data for table fivem-sandbox.whitelisted_peds: ~0 rows (approximately)
 
+-- Dumping structure for table fivem-sandbox.sb_documents
+CREATE TABLE IF NOT EXISTS `sb_documents` (
+  `scope` varchar(16) NOT NULL,
+  `collection_name` varchar(128) NOT NULL,
+  `doc_id` varchar(191) NOT NULL,
+  `document` longtext NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`scope`,`collection_name`,`doc_id`),
+  KEY `idx_collection` (`scope`,`collection_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+-- Dumping structure for table fivem-sandbox.sb_characters
+CREATE TABLE IF NOT EXISTS `sb_characters` (
+  `scope` varchar(16) NOT NULL,
+  `doc_id` varchar(191) NOT NULL,
+  `sid` bigint(20) DEFAULT NULL,
+  `user_id` varchar(128) DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT NULL,
+  `first_name` varchar(128) DEFAULT NULL,
+  `last_name` varchar(128) DEFAULT NULL,
+  `last_played` bigint(20) DEFAULT NULL,
+  `document` longtext NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`scope`,`doc_id`),
+  KEY `idx_char_sid` (`scope`,`sid`),
+  KEY `idx_char_user` (`scope`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+-- Dumping structure for table fivem-sandbox.sb_vehicles
+CREATE TABLE IF NOT EXISTS `sb_vehicles` (
+  `scope` varchar(16) NOT NULL,
+  `doc_id` varchar(191) NOT NULL,
+  `vin` varchar(128) DEFAULT NULL,
+  `owner_type` int(11) DEFAULT NULL,
+  `owner_id` varchar(128) DEFAULT NULL,
+  `stored` tinyint(4) DEFAULT NULL,
+  `seized` tinyint(1) DEFAULT NULL,
+  `model` varchar(128) DEFAULT NULL,
+  `document` longtext NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`scope`,`doc_id`),
+  KEY `idx_vehicle_vin` (`scope`,`vin`),
+  KEY `idx_vehicle_owner` (`scope`,`owner_type`,`owner_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+-- Dumping structure for table fivem-sandbox.sb_jobs
+CREATE TABLE IF NOT EXISTS `sb_jobs` (
+  `scope` varchar(16) NOT NULL,
+  `doc_id` varchar(191) NOT NULL,
+  `job_id` varchar(128) DEFAULT NULL,
+  `job_type` varchar(64) DEFAULT NULL,
+  `job_name` varchar(128) DEFAULT NULL,
+  `last_updated` bigint(20) DEFAULT NULL,
+  `document` longtext NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`scope`,`doc_id`),
+  KEY `idx_job_id` (`scope`,`job_id`),
+  KEY `idx_job_type` (`scope`,`job_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+-- Dumping structure for table fivem-sandbox.sb_loans
+CREATE TABLE IF NOT EXISTS `sb_loans` (
+  `scope` varchar(16) NOT NULL,
+  `doc_id` varchar(191) NOT NULL,
+  `sid` bigint(20) DEFAULT NULL,
+  `asset_identifier` varchar(128) DEFAULT NULL,
+  `loan_type` varchar(32) DEFAULT NULL,
+  `remaining` double DEFAULT NULL,
+  `next_payment` bigint(20) DEFAULT NULL,
+  `defaulted` tinyint(1) DEFAULT NULL,
+  `missed_payments` int(11) DEFAULT NULL,
+  `missable_payments` int(11) DEFAULT NULL,
+  `document` longtext NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`scope`,`doc_id`),
+  KEY `idx_loan_sid` (`scope`,`sid`),
+  KEY `idx_loan_asset` (`scope`,`asset_identifier`),
+  KEY `idx_loan_due` (`scope`,`defaulted`,`next_payment`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+-- Dumping structure for table fivem-sandbox.sb_loans_credit_scores
+CREATE TABLE IF NOT EXISTS `sb_loans_credit_scores` (
+  `sid` bigint(20) NOT NULL,
+  `score` int(11) NOT NULL DEFAULT 500,
+  PRIMARY KEY (`sid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
