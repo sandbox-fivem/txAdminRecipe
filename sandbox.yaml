@@ -104,7 +104,7 @@ tasks:
 
   - action: unzip
     src: ./tmp/oxmysql.zip
-    dest: ./resources/[standalone]/oxmysql
+    dest: ./resources/[standalone]
 
   - action: download_file
     path: ./tmp/ox_lib.zip
@@ -112,7 +112,7 @@ tasks:
 
   - action: unzip
     src: ./tmp/ox_lib.zip
-    dest: ./resources/[standalone]/ox_lib
+    dest: ./resources/[standalone]
 
   - action: download_file
     path: ./tmp/screenshot-basic.zip
