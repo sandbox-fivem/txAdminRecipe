@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `bank_accounts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table fivem-sandbox.bank_accounts: ~79 rows (approximately)
-INSERT INTO `bank_accounts` (`account`, `type`, `owner`, `balance`, `name`) VALUES
+INSERT IGNORE INTO `bank_accounts` (`account`, `type`, `owner`, `balance`, `name`) VALUES
 	(100000, 'organization', 'government', 500000, 'San Andreas State Account'),
 	(121316, 'organization', 'rustybrowns', 10000, 'Rusty Browns Account'),
 	(124182, 'organization', 'redline', 50000, 'Redline Account'),
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `bank_accounts_permissions` (
 ) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table fivem-sandbox.bank_accounts_permissions: ~80 rows (approximately)
-INSERT INTO `bank_accounts_permissions` (`id`, `account`, `type`, `jointOwner`, `job`, `workplace`, `jobPermissions`) VALUES
+INSERT IGNORE INTO `bank_accounts_permissions` (`id`, `account`, `type`, `jointOwner`, `job`, `workplace`, `jobPermissions`) VALUES
 	(69, 100000, 0, NULL, 'government', 'doj', '{"BALANCE":"STATE_ACCOUNT_BALANCE","TRANSACTIONS":"STATE_ACCOUNT_TRANSACTIONS","BILL":"STATE_ACCOUNT_BILL","WITHDRAW":"STATE_ACCOUNT_WITHDRAW","MANAGE":"STATE_ACCOUNT_MANAGE","DEPOSIT":"STATE_ACCOUNT_DEPOSIT"}'),
 	(70, 100000, 0, NULL, 'government', 'mayoroffice', '{"BALANCE":"STATE_ACCOUNT_BALANCE","TRANSACTIONS":"STATE_ACCOUNT_TRANSACTIONS","BILL":"STATE_ACCOUNT_BILL","WITHDRAW":"STATE_ACCOUNT_WITHDRAW","MANAGE":"STATE_ACCOUNT_MANAGE","DEPOSIT":"STATE_ACCOUNT_DEPOSIT"}'),
 	(71, 391717, 0, NULL, 'police', '', '{"DEPOSIT":"BANK_ACCOUNT_DEPOSIT","TRANSACTIONS":"BANK_ACCOUNT_TRANSACTIONS","BILL":"BANK_ACCOUNT_BILL","WITHDRAW":"BANK_ACCOUNT_WITHDRAW","MANAGE":"BANK_ACCOUNT_MANAGE","BALANCE":"BANK_ACCOUNT_BALANCE"}'),
@@ -311,7 +311,7 @@ CREATE TABLE IF NOT EXISTS `business_phones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table fivem-sandbox.business_phones: ~29 rows (approximately)
-INSERT INTO `business_phones` (`id`, `number`, `muted`) VALUES
+INSERT IGNORE INTO `business_phones` (`id`, `number`, `muted`) VALUES
 	('autoexotics', '622-970-6947', NULL),
 	('bahama', '096-892-5597', NULL),
 	('bakery', '289-221-1843', NULL),
@@ -649,7 +649,7 @@ CREATE TABLE IF NOT EXISTS `item_template` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- Dumping data for table fivem-sandbox.item_template: ~866 rows (approximately)
-INSERT INTO `item_template` (`name`, `label`, `description`, `type`, `rarity`, `iconOverride`, `price`, `weapon`, `state`, `weight`, `imitate`, `isStackable`, `closeUi`, `metalic`, `durability`, `isUsable`, `isDestroyed`, `isRemoved`, `gun`, `requiresLicense`, `qualification`, `ammoType`, `bulletCount`, `container`, `staticMetadata`, `component`, `animConfig`, `statusChange`, `extra`, `schematic`) VALUES
+INSERT IGNORE INTO `item_template` (`name`, `label`, `description`, `type`, `rarity`, `iconOverride`, `price`, `weapon`, `state`, `weight`, `imitate`, `isStackable`, `closeUi`, `metalic`, `durability`, `isUsable`, `isDestroyed`, `isRemoved`, `gun`, `requiresLicense`, `qualification`, `ammoType`, `bulletCount`, `container`, `staticMetadata`, `component`, `animConfig`, `statusChange`, `extra`, `schematic`) VALUES
 	('AMMO_BEANBAG_PD', 'PD Beanbag Ammo', NULL, 9, 1, 'AMMO_SHOTGUN', 5, NULL, NULL, 0, NULL, 10, 1, 1, 2592000, 0, 1, 1, 0, 0, 'PD_BEANBAG', 'AMMO_SHOTGUN', 5, NULL, NULL, NULL, NULL, NULL, '[]', NULL),
 	('AMMO_PISTOL', 'Pistol Ammo', NULL, 9, 1, NULL, 50, NULL, NULL, 0, NULL, 10, 1, 1, 2592000, 0, 1, 1, 0, 0, NULL, 'AMMO_PISTOL', 100, NULL, NULL, NULL, NULL, NULL, '[]', NULL),
 	('AMMO_PISTOL_PD', 'PD Pistol Ammo', NULL, 9, 1, 'AMMO_PISTOL', 5, NULL, NULL, 0, NULL, 10, 1, 1, 2592000, 0, 1, 1, 0, 0, NULL, 'AMMO_PISTOL', 100, NULL, NULL, NULL, NULL, NULL, '[]', NULL),
@@ -1530,7 +1530,7 @@ CREATE TABLE IF NOT EXISTS `mdt_charges` (
 ) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table fivem-sandbox.mdt_charges: ~144 rows (approximately)
-INSERT INTO `mdt_charges` (`id`, `type`, `title`, `description`, `fine`, `jail`, `points`) VALUES
+INSERT IGNORE INTO `mdt_charges` (`id`, `type`, `title`, `description`, `fine`, `jail`, `points`) VALUES
 	(1, 3, 'Capital Murder', '1st Degree Murder with specific circumstances. The special circumstances are defined as such:- Killing a government employee;- Killing an active member of a jury;- Killing a witness to prevent testimony in court;- Killing more than one victim (serial);', 0, 999, 0),
 	(2, 3, ' Accessory to Capital Murder', 'Accessory to Capital Murder', 0, 999, 0),
 	(3, 3, '1st Degree Murder', 'The unlawful killing of another human without justification or valid excuse, with malice aforethought/premeditation.', 0, 999, 0),
