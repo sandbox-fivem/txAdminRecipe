@@ -7,7 +7,7 @@ author: sandbox-fivem
 description: >
   An advanced FiveM RP framework including jobs, gangs, housing & more!
   Includes banking, inventory, vehicles, drugs, casino, and more.
-  Requires MariaDB/MySQL. Visit https://sandboxfw.com/ for more info.
+  Requires MariaDB/MySQL. Visit https://sandboxrp.gg for more info.
 
 tasks:
   # -----------------------------------------------
@@ -28,12 +28,18 @@ tasks:
     dest: ./logo.png
 
   # -----------------------------------------------
-  # Database — import SQL from this same repo
+  # Database — pull from dedicated sql repo
+  # (more reliable than the copy in txAdminRecipe)
   # -----------------------------------------------
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sql
+    ref: main
+    dest: ./tmp/sandbox-sql
+
   - action: connect_database
 
   - action: query_database
-    file: ./tmp/sandbox-recipe/database.sql
+    file: ./tmp/sandbox-sql/database.sql
 
   # -----------------------------------------------
   # Download config repo and place each file
