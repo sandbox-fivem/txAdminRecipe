@@ -28,18 +28,12 @@ tasks:
     dest: ./logo.png
 
   # -----------------------------------------------
-  # Database — pull from dedicated sql repo
-  # (more reliable than the copy in txAdminRecipe)
+  # Database — use database.sql bundled in recipe repo
   # -----------------------------------------------
-  - action: download_github
-    src: https://github.com/sandbox-fivem/sql
-    ref: main
-    dest: ./tmp/sandbox-sql
-
   - action: connect_database
 
   - action: query_database
-    file: ./tmp/sandbox-sql/database.sql
+    file: ./tmp/sandbox-recipe/database.sql
 
   # -----------------------------------------------
   # Download config repo and place each file
