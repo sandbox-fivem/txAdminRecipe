@@ -289,6 +289,11 @@ tasks:
     dest: ./resources/[sandbox]/sandbox-locations
 
   - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-loadscreen
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-loadscreen
+
+  - action: download_github
     src: https://github.com/sandbox-fivem/sandbox-mechanic
     ref: main
     dest: ./resources/[sandbox]/sandbox-mechanic
@@ -311,6 +316,11 @@ tasks:
     src: https://github.com/sandbox-fivem/sandbox-apartments
     ref: main
     dest: ./resources/[sandbox]/sandbox-apartments
+
+  - action: download_github
+    src: https://github.com/sandbox-fivem/sandbox-arcade
+    ref: main
+    dest: ./resources/[sandbox]/sandbox-arcade
 
   - action: download_github
     src: https://github.com/sandbox-fivem/sandbox-base
