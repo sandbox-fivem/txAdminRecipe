@@ -74,12 +74,14 @@ tasks:
   #       set mysql_connection_string "{{dbConnectionString}}"
   #     txAdmin will then replace {{dbConnectionString}} automatically.
   - action: replace_string
-    mode: all_vars
     file: ./server.cfg
+    search: "{{svLicense}}"
+    replace: "{{svLicense}}"
 
   - action: replace_string
-    mode: all_vars
     file: ./config/database.prod.cfg
+    search: "{{dbConnectionString}}"
+    replace: "{{dbConnectionString}}"
 
   # -----------------------------------------------
   # CFX default server data
